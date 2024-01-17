@@ -1,0 +1,7 @@
+{
+  "extension_pages": {
+    "script-src": ["self"],
+    "object-src": ["self"],
+    "sandbox": ["sandbox", "allow-scripts", "allow-same-origin"]
+  }
+}

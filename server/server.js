@@ -1,24 +1,52 @@
+// server.js
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
-const port = 3000;
+const path = require('path');
 
-app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-let gameData = {};
+app.get('/timers', (req, res) => {
+  // Simulate fetching timers from the database
+  const timers = [
+    { id: 1, ability: 'Timer 1', timeLeft: '01:30:00' },
+    { id: 2, ability: 'Timer 2', timeLeft: '00:45:00' },
+    // Add more timers as needed
+  ];
 
-app.post('/updateData', (req, res) => {
-  // Receive data from the extension and update the server's data
-  gameData = req.body;
-  res.sendStatus(200);
+  // Render HTML with timers
+  const htmlContent = renderHTMLWithTimers(timers);
+  res.send(htmlContent);
 });
 
-app.get('/getData', (req, res) => {
-  // Send the stored data to the extension
-  res.json(gameData);
-});
+function renderHTMLWithTimers(timers) {
+  // Your HTML rendering logic here
+  return `
+    <html>
+      <head>
+        <title>Game Dashboard</title>
+        <!-- Include any necessary styles and scripts -->
+      </head>
+      <body>
+        <h1>Game Dashboard</h1>
+        <div id="dataContainer">
+          <h2>Timers</h2>
+          <table>
+            <tr><th>ID</th><th>Ability</th><th>Time Left</th></tr>
+            ${timers.map(timer => `
+              <tr>
+                <td>${timer.id}</td>
+                <td>${timer.ability}</td>
+                <td>${timer.timeLeft}</td>
+              </tr>
+            `).join('')}
+          </table>
+        </div>
+      </body>
+    </html>
+  `;
+}
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

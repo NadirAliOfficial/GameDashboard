@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Game Dashboard",
+  "version": "1.0",
+  "permissions": ["http://157.230.97.71:3000/"],
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_popup": "popup/popup.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

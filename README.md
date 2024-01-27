@@ -18,4 +18,4 @@ A Chrome extension that renders live game data by fetching from public APIs and 
 
 ## License
 MIT
-<!-- updated: 2023-09-30-r01 -->
+<!-- updated: 2024-01-27-r01 -->

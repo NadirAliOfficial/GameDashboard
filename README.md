@@ -1,2 +1,3 @@
 # GameDashboard
 This is chrome extesnion for rendering API data...
+<!-- updated: 2026-05-28 -->
